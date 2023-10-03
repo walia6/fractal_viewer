@@ -1,0 +1,42 @@
+package com.andrewalia.model;
+
+import javafx.scene.image.PixelWriter;
+import javafx.scene.paint.Color;
+
+public class Mandelbrot implements Fractal {
+
+    @Override
+    public void generateFractal(PixelWriter pixelWriter, int width, int height, double viewportX, double viewportY, double viewportHeight, int maxIterations) {
+        double viewportWidth = viewportHeight * (double) width / height;
+        double minX = viewportX - viewportWidth / 2.0;
+        double maxX = viewportX + viewportWidth / 2.0;
+        double minY = viewportY - viewportHeight / 2.0;
+        double maxY = viewportY + viewportHeight / 2.0;
+        
+        for (int px = 0; px < width; px++) {
+            for (int py = 0; py < height; py++) {
+                double x0 = minX + (maxX - minX) * px / (width - 1);
+                double y0 = minY + (maxY - minY) * py / (height - 1);
+                
+                double x = 0.0;
+                double y = 0.0;
+                int iteration = 0;
+                
+                while (x*x + y*y <= 4 && iteration < maxIterations) {
+                    double xTemp = x*x - y*y + x0;
+                    y = 2*x*y + y0;
+                    x = xTemp;
+                    iteration++;
+                }
+                
+                if (iteration == maxIterations) {
+                    pixelWriter.setColor(px, py, Color.BLACK);
+                } else {
+                    // Map the number of iterations to a color
+                    float hue = 360f * (float)iteration / (float)maxIterations;
+                    pixelWriter.setColor(px, py, Color.hsb(hue, 1.0, 1.0));
+                }
+            }
+        }
+    }
+}
