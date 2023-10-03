@@ -31,7 +31,7 @@ Fractal Viewer is a robust and scalable desktop application, designed to visuali
 
 1. **Clone the Repository**
     ```shell
-    git clone https://github.com/yourusername/fractal_viewer.git
+    git clone https://github.com/walia6/fractal_viewer.git
     ```
 
 2. **Navigate to Project Directory**
