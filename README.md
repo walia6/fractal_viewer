@@ -62,9 +62,3 @@ Contributions, issues, and feature requests are welcome. Feel free to fork the r
 ## License
 
 This project is licensed under the MIT License - see the `LICENSE.md` file for details.
-
-## Author
-
-[Your Name]
-[Your Contact Information]
-
